@@ -23,8 +23,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
-        npm install
-        cp -r * /var/www/hackathon.jparry.dev/api/
-        pm2 restart sandbox-hackathon-api
+    - run: npm install
       working-directory: ./server
+    - run: cp -r ./server/. /var/www/hackathon.jparry.dev/api/
+    - run: pm2 restart sandbox-hackathon-api

@@ -1,0 +1,30 @@
+name: Deploy Express App
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore: ["client/**"]
+  pull_request:
+    branches: [ main ]
+    paths-ignore: ["client/**"]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: |
+        npm install
+        cp -r * /var/www/hackathon.jparry.dev/api/
+        pm2 restart sandbox-hackathon-api
+      working-directory: ./server

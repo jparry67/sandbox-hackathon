@@ -9,6 +9,6 @@ const router = Router();
 router.use('/session', sessionRouter);
 router.use('/user', userRouter);
 router.use('/message', messageRouter);
-// router.use('/todo', todoRouter);
+router.use('/todo', todoRouter);
 
 export default router;

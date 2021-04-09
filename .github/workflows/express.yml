@@ -26,4 +26,4 @@ jobs:
     - run: npm install
       working-directory: ./server
     - run: cp -r ./server/. /var/www/hackathon.jparry.dev/api/
-    - run: pm2 restart sandbox-hackathon-api
+    - run: pm2 restart hackathon-api

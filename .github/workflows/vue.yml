@@ -3,10 +3,10 @@ name: Deploy Vue App
 on:
   push:
     branches: [ main ]
-    paths-ignore: ["server/**"]
+    paths: ["client/**", ".github/workflows/vue.yml"]
   pull_request:
     branches: [ main ]
-    paths-ignore: ["server/**"]
+    paths: ["client/**", ".github/workflows/vue.yml"]
 
 jobs:
   build:
@@ -23,8 +23,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
-        npm install
-        npm run build
-        cp -r dist/* /var/www/hackathon.jparry.dev/html/
+    - run: npm install
       working-directory: ./client
+    - run: npm run build
+      working-directory: ./client
+    - run: cp -r ./client/dist/. /var/www/hackathon.jparry.dev/html/

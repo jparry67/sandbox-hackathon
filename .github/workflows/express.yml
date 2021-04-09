@@ -3,10 +3,10 @@ name: Deploy Express App
 on:
   push:
     branches: [ main ]
-    paths-ignore: ["client/**"]
+    paths: ["server/**", ".github/workflows/express.yml"]
   pull_request:
     branches: [ main ]
-    paths-ignore: ["client/**"]
+    paths: ["server/**", ".github/workflows/express.yml"]
 
 jobs:
   build:

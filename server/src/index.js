@@ -6,10 +6,11 @@ import router from './routes/index.js';
 import models, { connectDb } from './models/index.js';
 
 const app = express();
-const { json } = bodyParser;
+const { json, urlencoded } = bodyParser;
 
 app.use(cors());
-app.use(json())
+app.use(urlencoded({ extended: false }));
+app.use(json());
 app.use('/api', router);
 
 connectDb().then(async() => {

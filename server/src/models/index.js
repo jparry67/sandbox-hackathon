@@ -10,6 +10,5 @@ const connectDb = () => {
 export { connectDb };
 export default {
     User,
-    Message,
     Todo
 };

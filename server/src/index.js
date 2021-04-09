@@ -7,20 +7,14 @@ import models, { connectDb } from './models/index.js';
 
 const app = express();
 const { json } = bodyParser;
-const eraseDatabaseOnSync = true;
 
 app.use(cors());
 app.use(json())
 app.use('/api', router);
 
 connectDb().then(async() => {
-    if (eraseDatabaseOnSync) {
-        await Promise.all([
-            models.User.deleteMany({}),
-            models.Message.deleteMany({}),
-        ]);
-    }
-   
+    // seed or erase data here if we need to
+
     app.listen(process.env.PORT, () => {
         console.log(`listening on ${process.env.PORT}`);
     });

@@ -1,5 +1,5 @@
 const axios = require('axios');
-const baseUrl = process.env.VUE_APP_SERVER_BASE_URL + '/todo';
+const baseUrl = `${process.env.VUE_APP_SERVER_BASE_URL}/todo`;
 
 export default {
     getAllTodos() {

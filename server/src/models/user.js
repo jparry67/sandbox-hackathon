@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema(
         timestamps: true,
     },
 );
- 
+
+// we can build functions straight into the schema
 userSchema.statics.findByLogin = async function (login) {
     let user = await this.findOne({
         username: login,

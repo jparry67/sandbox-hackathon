@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
  
 import User from './user.js';
-import Message from './message.js';
 import Todo from './todo.js';
  
 const connectDb = () => {

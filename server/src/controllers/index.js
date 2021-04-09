@@ -1,4 +1,4 @@
-import todoController from './todo.js';
+import todoController from './todo-controller.js';
 
 export default {
     todoController,

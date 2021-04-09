@@ -1,11 +1,14 @@
-import session from './session.js';
-import user from './user.js';
-import message from './message.js';
-import todo from './todo.js';
+import { Router } from 'express';
+import sessionRouter from './session.js';
+import userRouter from './user.js';
+import messageRouter from './message.js';
+import todoRouter from './todo.js';
 
-export default {
-    session,
-    user,
-    message,
-    todo,
-}
+const router = Router();
+
+router.use('/session', sessionRouter);
+router.use('/user', userRouter);
+router.use('/message', messageRouter);
+router.use('/todo', todoRouter);
+
+export default router;

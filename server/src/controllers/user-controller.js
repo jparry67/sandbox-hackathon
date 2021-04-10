@@ -4,7 +4,7 @@ const { User } = models;
 const userController = {
     async registerNewUser (req, res) {
         try {
-            const user = await User.findOne({ email: req.body.email });
+            let user = await User.findOne({ email: req.body.email });
             if (user) {
                 return res.status(409).json({
                     message: "email already in use"

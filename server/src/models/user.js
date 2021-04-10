@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please include your password"]
         },
+        userType: {
+            type: String,
+            required: [true, "include userType"]
+        },
         tokens: [
             {
                 token: {

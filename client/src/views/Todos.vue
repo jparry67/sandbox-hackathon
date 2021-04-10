@@ -5,7 +5,7 @@
             <span>Create New Todo:</span>
             <input placeholder="Title" v-model="newTitle" />
             <input placeholder="Description" v-model="newDescription" />
-            <fa class="icon" icon="save" @click="createTodo()" />
+            <fa class="icon" icon="plus-circle" @click="createTodo()" />
         </div>
         <Todo v-for="todo in todos" :key="todo.id" :todo="todo" @updateTodo="updateTodo(todo, $event)" @deleteTodo="deleteTodo" />
     </div>
@@ -64,8 +64,9 @@ export default {
     width: 700px;
     display: flex;
     justify-content: space-around;
+    line-height: 30px;
     .icon {
-        font-size: 16px;
+        font-size: 30px;
         cursor: pointer;
     }
 }

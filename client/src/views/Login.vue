@@ -1,5 +1,6 @@
 <template>
     <div class="login">
+        <Nav type="unauthenticated" />
         <form @submit.prevent="loginUser">
             <input type="text" id="email" placeholder="Email" v-model="login.email" />
             <input type="password" id="password" placeholder="Password" v-model="login.password" />
@@ -12,9 +13,13 @@
 
 <script>
 import UserService from '@/services/UserService.js';
+import Nav from '@/components/Nav.vue';
 
 export default {
     name: 'Login',
+    components: {
+        Nav
+    },
     data: () => {
         return {
             login: {
@@ -28,9 +33,13 @@ export default {
         async loginUser() {
             try {
                 let response = await UserService.login(this.login);
-                console.log(response.data);
-                localStorage.setItem('userType', response.data.user.userType);
-                this.$router.push('/shadow');
+                const userType = response.data.user.userType;
+                localStorage.setItem('userType', userType);
+                if (userType === 'student') {
+                    this.$router.push('/student/shadow-search');
+                } else {
+                    this.$router.push('/employee/upcoming-shadows');
+                }
                 this.failedLoginMessage = '';
             } catch (err) {
                 this.failedLoginMessage = 'Login failed!';

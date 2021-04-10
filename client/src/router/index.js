@@ -9,14 +9,6 @@ const routes = [
         component: Home
     },
     {
-        path: '/todos',
-        name: 'Todos',
-        component: () => import('../views/Todos.vue'),
-        meta: {
-            requiresAuth: true,
-        }
-    },
-    {
         path: '/login',
         name: 'Login',
         component: () => import('../views/Login.vue')
@@ -27,14 +19,24 @@ const routes = [
         component: () => import('../views/Register.vue')
     },
     {
-        path: '/shadow',
-        name: 'Shadow',
-        component: () => import('../views/Shadow.vue')
+        path: '/student/shadows',
+        name: 'Shadows',
+        component: () => import('../views/student/Shadows.vue')
     },
     {
-        path: '/calendar',
-        name: 'Calendar',
-        component: () => import('../views/Calendar.vue')
+        path: '/student/shadow-search',
+        name: 'ShadowSearch',
+        component: () => import('../views/student/ShadowSearch.vue')
+    },
+    {
+        path: '/student/shadow-calendar',
+        name: 'ShadowCalendar',
+        component: () => import('../views/student/ShadowCalendar.vue')
+    },
+    {
+        path: '/employee/upcoming-shadows',
+        name: 'UpcomingShadows',
+        component: () => import('../views/employee/UpcomingShadows.vue')
     },    
 ]
 

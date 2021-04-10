@@ -1,13 +1,5 @@
 <template>
     <div class="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/shadow">Shadow</router-link> |
-            <router-link to="/calendar">Calendar</router-link> |
-            <router-link to="/login">Login</router-link> |
-            <router-link to="/register">Register</router-link> |
-            <button @click="logout">Log out</button>
-        </div>
         <router-view/>
     </div>
 </template>
@@ -15,16 +7,14 @@
 <script>
 export default {
     name: 'App',
-    methods: {
-        logout() {
-            localStorage.removeItem('userType');
-            this.$router.push('/');
-        }
-    },
 }
 </script>
 
 <style lang="scss">
+body {
+    margin: 0;
+}
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -33,15 +23,33 @@ export default {
     color: #2c3e50;
 }
 
-#nav {
-    padding: 30px;
+.page {
+    padding: 20px;
 
-    a {
-        font-weight: bold;
-        color: #2c3e50;
+    .page-header {
+        display: flex;
+        .title {
+            font-size: 30px;
+        }
+    }
 
-        &.router-link-exact-active {
-            color: #42b983;
+    .card-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 250px);
+        .card {
+            margin: 20px;
+            padding: 20px;
+            background-color: #999999;
+            color: #000000;
+            width: 200px;
+            height: 150px;
+            display: grid;
+            place-items: center start;
+            cursor: pointer;
+            .header {
+                font-size: 20px;
+                font-weight: 600;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 <template>
     <div class="register">
+        <Nav type="unauthenticated" />
         <form @submit.prevent="registerUser">
             <input type="text" id="name" placeholder="Name" v-model="register.name" />
             <input type="text" id="email" placeholder="Email" v-model="register.email" />
@@ -14,8 +15,14 @@
 </template>
 
 <script>
+import UserService from '@/services/UserService.js';
+import Nav from '@/components/Nav.vue';
+
 export default {
     name: 'Register',
+    components: {
+        Nav
+    },
     data: () => {
         return {
             register: {
@@ -30,11 +37,14 @@ export default {
     methods: {
         async registerUser() {
             try {
-                console.log(this.register);
-                let response = await this.UserService.register(this.register);
-                console.log(response);
-                localStorage.setItem('userType', response.data.user.userType);
-                this.$router.push('/');
+                let response = await UserService.register(this.register);
+                const userType = response.data.user.userType;
+                localStorage.setItem('userType', userType);
+                if (userType === 'student') {
+                    this.$router.push('/student/shadow-search');
+                } else {
+                    this.$router.push('/employee/upcoming-shadows');
+                }
                 this.failedRegisterMessage = '';
             } catch (err) {
                 this.failedRegisterMessage = err.response;

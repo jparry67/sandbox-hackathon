@@ -4,6 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import router from './routes/index.js';
 import models, { connectDb } from './models/index.js';
+import seedData from './seed-data.js';
 
 const app = express();
 const { json, urlencoded } = bodyParser;
@@ -14,9 +15,9 @@ app.use(json());
 app.use('/api', router);
 
 connectDb().then(async() => {
-    // seed or erase data here if we need to
-
+    await seedData();
     app.listen(process.env.PORT, () => {
         console.log(`listening on ${process.env.PORT}`);
     });
 });
+

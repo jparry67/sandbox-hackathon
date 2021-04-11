@@ -16,9 +16,6 @@ export default {
     props: {
         type: String,
     },
-    created: function() {
-        console.log(this.type);
-    },
     methods: {
         logout() {
             localStorage.removeItem('userType');

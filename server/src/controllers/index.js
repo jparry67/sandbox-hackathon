@@ -1,9 +1,9 @@
-import todoController from './todo-controller.js';
 import userController from './user-controller.js';
 import employeeController from './employee-controller.js';
+import appointmentController from './appointment-controller.js';
 
 export default {
-    todoController,
     userController,
     employeeController,
+    appointmentController,
 }

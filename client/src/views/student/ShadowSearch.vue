@@ -60,8 +60,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
-}
 </style>

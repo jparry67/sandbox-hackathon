@@ -11,8 +11,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import './styles/variables.scss';
 body {
     margin: 0;
+    user-select: none;
 }
 
 #app {
@@ -39,8 +41,7 @@ body {
         .card {
             margin: 20px;
             padding: 20px;
-            background-color: #999999;
-            color: #000000;
+            background-color: $grey1;
             width: 200px;
             height: 150px;
             display: grid;
@@ -49,6 +50,18 @@ body {
             .header {
                 font-size: 20px;
                 font-weight: 600;
+            }
+            .appointment-info {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+            }
+            .action {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                text-decoration: underline;
+                width: 100%;
             }
         }
     }

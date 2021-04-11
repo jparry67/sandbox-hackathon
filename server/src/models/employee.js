@@ -2,11 +2,6 @@ import mongoose from 'mongoose';
 
 const employeeSchema = new mongoose.Schema(
     {
-        name: {
-            type: String,
-            unique: true,
-            required: true,
-        },
         description: {
             type: String,
             required: true,
@@ -18,19 +13,29 @@ const employeeSchema = new mongoose.Schema(
         linkedinUrl: {
             type: String,
         },
+        user: {
+            type: mongoose.Schema.Types.Object,
+            ref: 'User',
+        },
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        company: {
+            type: mongoose.Schema.Types.Object,
+            ref: 'Company',
+        },
         companyId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Company',
         },
-        company: {
-            type: Object,
+        job: {
+            type: mongoose.Schema.Types.Object,
+            ref: 'Job',
         },
         jobId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Job',
-        },
-        job: {
-            type: Object,
         },
     },
     {

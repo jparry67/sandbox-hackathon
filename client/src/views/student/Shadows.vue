@@ -42,7 +42,6 @@ export default {
         if (localStorage.getItem('employeeId')) {
             const response = await EmployeeService.getEmployee(localStorage.getItem('employeeId'));
             this.employee = response.data.employee;
-            console.log(this.employee);
         } else {
             this.$router.push('/student/shadow-search');
         }

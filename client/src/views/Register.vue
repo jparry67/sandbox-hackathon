@@ -38,7 +38,7 @@ export default {
         async registerUser() {
             try {
                 let response = await UserService.register(this.register);
-                const userType = response.data.user.userType;
+                const userType = response.data.userType;
                 localStorage.setItem('userType', userType);
                 if (userType === 'student') {
                     this.$router.push('/student/shadow-search');

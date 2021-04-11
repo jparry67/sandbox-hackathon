@@ -33,6 +33,7 @@ export default {
         async loginUser() {
             try {
                 let response = await UserService.login(this.login);
+                localStorage.setItem('userId', response.data.user._id);
                 const userType = response.data.user.userType;
                 localStorage.setItem('userType', userType);
                 if (userType === 'student') {

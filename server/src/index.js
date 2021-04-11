@@ -17,7 +17,6 @@ app.use('/api', router);
 connectDb().then(async() => {
     await seedData();
     app.listen(process.env.PORT, () => {
-        console.log(`listening on ${process.env.PORT}`);
     });
 });
 
